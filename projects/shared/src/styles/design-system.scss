@@ -1,0 +1,5 @@
+// Punto de entrada del Design System YIPA.
+// Uso en cada app:  @use 'shared/styles/design-system' as *;
+@forward 'tokens';
+@forward 'mixins';
+@forward 'base';

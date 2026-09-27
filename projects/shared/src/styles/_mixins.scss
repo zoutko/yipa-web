@@ -1,0 +1,70 @@
+// =============================================================
+// YIPA Design System — Mixins & helpers
+// =============================================================
+
+@mixin glass($opacity: 0.72) {
+  background: rgba(255, 255, 255, $opacity);
+  backdrop-filter: var(--yipa-blur);
+  -webkit-backdrop-filter: var(--yipa-blur);
+  border: 1px solid rgba(255, 255, 255, 0.55);
+}
+
+@mixin glass-dark($opacity: 0.6) {
+  background: rgba(31, 31, 31, $opacity);
+  backdrop-filter: var(--yipa-blur);
+  -webkit-backdrop-filter: var(--yipa-blur);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--yipa-text-on-dark);
+}
+
+@mixin card($radius: var(--yipa-radius-lg)) {
+  background: var(--yipa-surface);
+  border-radius: $radius;
+  box-shadow: var(--yipa-shadow-sm);
+  border: 1px solid var(--yipa-border);
+}
+
+@mixin press-feedback {
+  transition: transform var(--yipa-dur-fast) var(--yipa-ease),
+    opacity var(--yipa-dur-fast) var(--yipa-ease),
+    box-shadow var(--yipa-dur-base) var(--yipa-ease);
+
+  &:active {
+    transform: scale(0.97);
+  }
+}
+
+@mixin truncate($lines: 1) {
+  @if $lines == 1 {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  } @else {
+    display: -webkit-box;
+    -webkit-line-clamp: $lines;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+
+// Breakpoints: mobile-first. Objetivo principal: teléfonos y tablets.
+$bp-tablet: 768px;
+$bp-tablet-lg: 1024px;
+
+@mixin mobile-only {
+  @media (max-width: 767px) {
+    @content;
+  }
+}
+
+@mixin tablet-up {
+  @media (min-width: 768px) {
+    @content;
+  }
+}
+
+@mixin tablet-lg-up {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}

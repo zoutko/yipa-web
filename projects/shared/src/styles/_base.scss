@@ -1,0 +1,372 @@
+// =============================================================
+// YIPA Design System — Reset + utilidades globales
+// =============================================================
+@use 'mixins' as *;
+
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  font-family: var(--yipa-font);
+  font-size: var(--yipa-fs-body);
+  color: var(--yipa-text);
+  background: var(--yipa-secondary);
+  line-height: 1.45;
+  -webkit-font-smoothing: antialiased;
+  overscroll-behavior-y: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+p {
+  margin: 0;
+}
+
+button {
+  font-family: inherit;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+// ---- Shell de aplicación (mobile-first; se expande en tablet) ----
+.yipa-shell {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+  height: 100dvh;
+  margin: 0 auto;
+  background: var(--yipa-bg);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.yipa-screen {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  animation: yipa-screen-in var(--yipa-dur-slow) var(--yipa-ease) both;
+}
+
+.yipa-scroll {
+  flex: 1;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: var(--yipa-sp-4);
+  padding-bottom: calc(var(--yipa-sp-10) + var(--yipa-safe-bottom));
+  display: flex;
+  flex-direction: column;
+  gap: var(--yipa-sp-4);
+
+  // En tablet el contenido se centra y respira más, sin perder el ancho útil.
+  @include tablet-up {
+    padding: var(--yipa-sp-6) var(--yipa-sp-8);
+    gap: var(--yipa-sp-5);
+
+    > * {
+      width: 100%;
+      max-width: 680px;
+      margin-inline: auto;
+    }
+  }
+}
+
+// Layout maestro/detalle para pantallas con mapa: en tablet el mapa queda
+// a la izquierda y el panel de acción a la derecha; en móvil se apilan.
+.yipa-split {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+
+  @include tablet-up {
+    flex-direction: row;
+    align-items: stretch;
+    gap: var(--yipa-sp-5);
+    padding: var(--yipa-sp-5);
+  }
+}
+
+.yipa-split__map {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+
+  @include tablet-up {
+    flex: 1.15;
+    border-radius: var(--yipa-radius-xl);
+    overflow: hidden;
+    box-shadow: var(--yipa-shadow-md);
+  }
+}
+
+.yipa-split__panel {
+  @include tablet-up {
+    flex: 0 0 380px;
+    max-width: 420px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: var(--yipa-sp-4);
+  }
+
+  @include tablet-lg-up {
+    flex-basis: 420px;
+  }
+}
+
+// ---- Tipografía ----
+.yipa-title {
+  font-size: var(--yipa-fs-title1);
+  font-weight: var(--yipa-fw-bold);
+  letter-spacing: -0.02em;
+}
+.yipa-title-2 {
+  font-size: var(--yipa-fs-title2);
+  font-weight: var(--yipa-fw-semibold);
+  letter-spacing: -0.015em;
+}
+.yipa-headline {
+  font-size: var(--yipa-fs-headline);
+  font-weight: var(--yipa-fw-semibold);
+}
+.yipa-body {
+  font-size: var(--yipa-fs-body);
+}
+.yipa-subhead {
+  font-size: var(--yipa-fs-subhead);
+  color: var(--yipa-text-secondary);
+}
+.yipa-caption {
+  font-size: var(--yipa-fs-caption);
+  color: var(--yipa-text-tertiary);
+}
+.yipa-muted {
+  color: var(--yipa-text-secondary);
+}
+.yipa-center {
+  text-align: center;
+}
+
+// ---- Layout utilidades ----
+.yipa-row {
+  display: flex;
+  align-items: center;
+  gap: var(--yipa-sp-3);
+}
+.yipa-row-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--yipa-sp-3);
+}
+.yipa-col {
+  display: flex;
+  flex-direction: column;
+  gap: var(--yipa-sp-2);
+}
+.yipa-grow {
+  flex: 1;
+}
+.yipa-gap-1 {
+  gap: var(--yipa-sp-1);
+}
+.yipa-gap-4 {
+  gap: var(--yipa-sp-4);
+}
+
+// ---- Tarjetas / superficies ----
+.yipa-card {
+  @include card;
+  padding: var(--yipa-sp-4);
+}
+
+.yipa-card-flat {
+  background: var(--yipa-surface);
+  border-radius: var(--yipa-radius-lg);
+  padding: var(--yipa-sp-4);
+}
+
+.yipa-glass {
+  @include glass;
+  border-radius: var(--yipa-radius-lg);
+}
+
+.yipa-divider {
+  height: 1px;
+  background: var(--yipa-border);
+  margin: var(--yipa-sp-2) 0;
+}
+
+// ---- Listas estilo iOS ----
+.yipa-list {
+  background: var(--yipa-surface);
+  border-radius: var(--yipa-radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--yipa-border);
+}
+
+.yipa-list-item {
+  display: flex;
+  align-items: center;
+  gap: var(--yipa-sp-3);
+  width: 100%;
+  padding: var(--yipa-sp-3) var(--yipa-sp-4);
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--yipa-border);
+  text-align: left;
+  font-size: var(--yipa-fs-subhead);
+  color: var(--yipa-text);
+  cursor: pointer;
+  @include press-feedback;
+
+  &:last-child {
+    border-bottom: 0;
+  }
+  &:hover {
+    background: var(--yipa-surface-alt);
+  }
+}
+
+// ---- Badges ----
+.yipa-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--yipa-sp-1);
+  padding: 4px 10px;
+  border-radius: var(--yipa-radius-pill);
+  font-size: var(--yipa-fs-caption);
+  font-weight: var(--yipa-fw-semibold);
+  background: var(--yipa-secondary-soft);
+  color: var(--yipa-text-secondary);
+
+  &.is-primary {
+    background: var(--yipa-primary-soft);
+    color: var(--yipa-primary-dark);
+  }
+  &.is-success {
+    background: rgba(52, 199, 89, 0.14);
+    color: #1f8a3b;
+  }
+  &.is-error {
+    background: rgba(255, 59, 48, 0.12);
+    color: var(--yipa-error);
+  }
+  &.is-warning {
+    background: rgba(255, 204, 0, 0.18);
+    color: #9a7a00;
+  }
+}
+
+// ---- Skeleton / loading ----
+.yipa-skeleton {
+  border-radius: var(--yipa-radius-md);
+  background: linear-gradient(
+    90deg,
+    var(--yipa-surface-alt) 25%,
+    rgba(255, 255, 255, 0.9) 37%,
+    var(--yipa-surface-alt) 63%
+  );
+  background-size: 400% 100%;
+  animation: yipa-shimmer 1.4s ease infinite;
+  height: 16px;
+}
+
+// ---- Animaciones ----
+@keyframes yipa-screen-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.995);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes yipa-sheet-up {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes yipa-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes yipa-pulse {
+  0% {
+    transform: scale(0.85);
+    opacity: 0.85;
+  }
+  70% {
+    transform: scale(1.6);
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes yipa-shimmer {
+  0% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0 50%;
+  }
+}
+
+@keyframes yipa-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@keyframes yipa-pop {
+  0% {
+    opacity: 0;
+    transform: scale(0.6);
+  }
+  60% {
+    transform: scale(1.08);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
