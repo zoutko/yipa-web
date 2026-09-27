@@ -1,0 +1,94 @@
+// =============================================================
+// YIPA Design System — Design Tokens
+// Inspiración: Apple HIG / iOS / Apple Maps · Cultura: Yipao colombiano
+// =============================================================
+
+:root {
+  // ---- Marca -------------------------------------------------
+  --yipa-primary: #f4c542;
+  --yipa-primary-dark: #d9a81f;
+  --yipa-primary-soft: rgba(244, 197, 66, 0.16);
+  --yipa-secondary: #1f1f1f;
+  --yipa-secondary-soft: rgba(31, 31, 31, 0.06);
+  --yipa-complement: #f8f6f2;
+
+  // ---- Semánticos --------------------------------------------
+  --yipa-success: #34c759;
+  --yipa-error: #ff3b30;
+  --yipa-warning: #ffcc00;
+  --yipa-info: #0a84ff;
+
+  // ---- Texto --------------------------------------------------
+  --yipa-text: #202124;
+  --yipa-text-secondary: #5f6368;
+  --yipa-text-tertiary: #9aa0a6;
+  --yipa-text-on-primary: #1f1f1f;
+  --yipa-text-on-dark: #f8f6f2;
+
+  // ---- Superficies --------------------------------------------
+  --yipa-bg: #f8f6f2;
+  --yipa-surface: #ffffff;
+  --yipa-surface-alt: #f2efe9;
+  --yipa-surface-dark: #1f1f1f;
+  --yipa-border: rgba(32, 33, 36, 0.1);
+  --yipa-overlay: rgba(31, 31, 31, 0.45);
+  --yipa-glass: rgba(255, 255, 255, 0.72);
+  --yipa-glass-dark: rgba(31, 31, 31, 0.6);
+
+  // ---- Tipografía ---------------------------------------------
+  --yipa-font: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', Roboto,
+    'Helvetica Neue', Arial, sans-serif;
+  --yipa-fs-caption2: 0.6875rem; // 11
+  --yipa-fs-caption: 0.75rem; // 12
+  --yipa-fs-footnote: 0.8125rem; // 13
+  --yipa-fs-subhead: 0.9375rem; // 15
+  --yipa-fs-body: 1rem; // 17 ~
+  --yipa-fs-headline: 1.0625rem;
+  --yipa-fs-title3: 1.25rem;
+  --yipa-fs-title2: 1.375rem;
+  --yipa-fs-title1: 1.75rem;
+  --yipa-fs-large: 2.125rem;
+  --yipa-fw-regular: 400;
+  --yipa-fw-medium: 500;
+  --yipa-fw-semibold: 600;
+  --yipa-fw-bold: 700;
+
+  // ---- Espaciado (escala 4pt) ----------------------------------
+  --yipa-sp-1: 4px;
+  --yipa-sp-2: 8px;
+  --yipa-sp-3: 12px;
+  --yipa-sp-4: 16px;
+  --yipa-sp-5: 20px;
+  --yipa-sp-6: 24px;
+  --yipa-sp-8: 32px;
+  --yipa-sp-10: 40px;
+  --yipa-sp-12: 48px;
+
+  // ---- Radios ---------------------------------------------------
+  --yipa-radius-sm: 10px;
+  --yipa-radius-md: 14px;
+  --yipa-radius-lg: 20px;
+  --yipa-radius-xl: 28px;
+  --yipa-radius-pill: 999px;
+
+  // ---- Sombras --------------------------------------------------
+  --yipa-shadow-xs: 0 1px 2px rgba(32, 33, 36, 0.06);
+  --yipa-shadow-sm: 0 2px 8px rgba(32, 33, 36, 0.08);
+  --yipa-shadow-md: 0 8px 24px rgba(32, 33, 36, 0.1);
+  --yipa-shadow-lg: 0 18px 48px rgba(32, 33, 36, 0.16);
+
+  // ---- Movimiento ------------------------------------------------
+  --yipa-ease: cubic-bezier(0.32, 0.72, 0, 1); // iOS spring-like
+  --yipa-ease-out: cubic-bezier(0.25, 1, 0.5, 1);
+  --yipa-dur-fast: 140ms;
+  --yipa-dur-base: 240ms;
+  --yipa-dur-slow: 420ms;
+
+  // ---- Layout -----------------------------------------------------
+  --yipa-max-width: 480px;
+  --yipa-safe-bottom: env(safe-area-inset-bottom, 0px);
+  --yipa-blur: saturate(180%) blur(20px);
+  --yipa-z-sheet: 40;
+  --yipa-z-modal: 60;
+  --yipa-z-toast: 80;
+}
